@@ -20,3 +20,9 @@ Debug/
 Release/
 x64/
 *.vcxproj.user
+
+# CMake
+include/config.h
+build/*
+debug/*
+bin

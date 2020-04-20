@@ -1,0 +1,15 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix="${prefix}/@CMAKE_INSTALL_BINDIR@"
+libdir="${prefix}/@CMAKE_INSTALL_LIBDIR@"
+includedir="${prefix}/@CMAKE_INSTALL_INCLUDEDIR@"
+
+Name: @PROJECT_NAME@
+Description: @PROJECT_DESCRIPTION@
+Version: @PROJECT_VERSION@
+
+Requires: @PROJECT_PC_REQUIRES@
+Requires.private: @PROJECT_PC_REQUIRES_PRIVATE@
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -l@PROJECT_NAME@
+Libs.private: @PROJECT_PC_LIBS_PRIVATE@

@@ -1,0 +1,27 @@
+## NAME
+
+serialport - TBD
+
+## SYNOPSIS
+
+TODO
+
+## DESCRIPTION
+
+TODO
+
+## RETURN VALUE
+
+TODO
+
+## EXAMPLES
+
+TODO
+
+## SEE ALSO
+
+TODO
+
+## AUTHOR
+
+Alessio Volpe <alessio.volpe@aol.com>
