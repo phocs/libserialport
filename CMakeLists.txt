@@ -6,28 +6,33 @@ if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     You should create a separate directory for build files.")
 endif()
 
+# Package Version
+# - If breaking API compatibility in a library, or making a large change to an
+#   application which affects everything (such as a UI redesign), increment
+#   major and set minor and micro to 0.
+# - Otherwise, if changing or adding a feature, or adding any API,
+#   increment minor and set micro to 0.
+# - Otherwise (if making a release containing only bug fixes and translation
+#   updates), increment micro.
+
 project(
     serialport
-	VERSION 0.0.1
+	VERSION 0.2.0
     LANGUAGES C
-	DESCRIPTION ""
+    DESCRIPTION "Unofficial repository for libserialport."
     HOMEPAGE_URL "https://github.com/phocs/serialport.git"
 )
 
 #Make sure that custom modules are found
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+include(config)
 include(options)
 
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.h.in
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h
-)
-
-add_subdirectory(lib)
+# add_subdirectory(lib)
 add_subdirectory(src)
 # add_subdirectory(examples)
-add_subdirectory(test)
-add_subdirectory(man)
+# add_subdirectory(test)
+# add_subdirectory(man)
 # add_subdirectory(docs)
 
 # Target install
@@ -73,3 +78,19 @@ if(NOT TARGET uninstall)
         COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake
     )
 endif()
+
+#
+# message(STATUS "Package version................. $SP_PACKAGE_VERSION")
+# message(STATUS "Library ABI version............. $SP_LIB_VERSION")
+# message(STATUS "Prefix.......................... $prefix")
+# message(STATUS "Building on..................... $build")
+# message(STATUS "Building for.................... $host")
+# message(STATUS "Building shared/static.......... $enable_shared / $enable_static")
+# message(STATUS "Package version................. $SP_PACKAGE_VERSION")
+# message(STATUS "Package version................. $SP_PACKAGE_VERSION")
+#
+# message(STATUS "Compile configuration:")
+# message(STATUS "C compiler...................... $CC")
+# message(STATUS "C compiler version.............. $sp_cc_version")
+# message(STATUS "C compiler flags................ $CFLAGS")
+# message(STATUS "Linker flags.................... $LDFLAGS")

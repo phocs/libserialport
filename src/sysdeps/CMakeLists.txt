@@ -19,5 +19,6 @@ endif()
 
 target_include_directories(
     ${PROJECT_NAME}_sysdeps PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/src
 )

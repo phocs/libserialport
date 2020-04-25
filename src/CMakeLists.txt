@@ -1,13 +1,20 @@
 add_library(
     ${PROJECT_NAME}
-        .c
+        serialport.c
+        timing.c
         $<TARGET_OBJECTS:${PROJECT_NAME}_sysdeps>
+)
+
+string(REPLACE ":" "." SOVERSION_STR ${PROJECT_SOVERSION})
+set_target_properties(
+    ${PROJECT_NAME} PROPERTIES
+        SOVERSION ${SOVERSION_STR}
 )
 
 # Build option
 target_compile_features(
     ${PROJECT_NAME} PRIVATE
-        c_std_11
+        c_std_99
 )
 
 target_compile_definitions(
@@ -17,8 +24,9 @@ target_compile_definitions(
 
 target_compile_options(
     ${PROJECT_NAME} PRIVATE
-        -Wall -Wextra -Werror -pedantic -Wno-unused-parameter
-        -ffunction-sections -fdata-sections
+        -Wall -Wextra -Werror -Wshadow
+        -Wno-unused-parameter -Wmissing-prototypes
+        -pedantic -ffunction-sections -fdata-sections
 )
 
 target_include_directories(
@@ -28,7 +36,7 @@ target_include_directories(
         PRIVATE
             # ${PROJECT_SOURCE_DIR}/lib/
             ${CMAKE_CURRENT_SOURCE_DIR}
-            ${CMAKE_CURRENT_SOURCE_DIR}/sysdeps
+            # ${CMAKE_CURRENT_SOURCE_DIR}/sysdeps
 )
 
 # target_link_libraries(
@@ -36,5 +44,5 @@ target_include_directories(
 #     PRIVATE
 #         lib*
 # )
-
+# -version-info $(SP_LIB_VERSION) -no-undefined
 add_subdirectory(sysdeps)

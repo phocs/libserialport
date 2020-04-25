@@ -36,10 +36,10 @@
 #define _POSIX_C_SOURCE 199309L
 #endif
 
-#ifdef LIBSERIALPORT_ATBUILD
+// #ifdef LIBSERIALPORT_ATBUILD
 /* If building with autoconf, include the generated config.h. */
 #include <config.h>
-#endif
+// #endif
 
 #ifdef LIBSERIALPORT_MSBUILD
 /* If building with MS tools, define necessary things that
@@ -47,7 +47,7 @@
 #define SP_PRIV
 #endif
 
-#include "libserialport.h"
+#include <libserialport.h>
 
 #include <string.h>
 #include <sys/types.h>

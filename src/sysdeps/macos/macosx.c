@@ -19,8 +19,8 @@
  */
 
 #include <config.h>
-#include "libserialport.h"
-#include "libserialport_internal.h"
+#include <libserialport.h>
+#include <libserialport_internal.h>
 
 SP_PRIV enum sp_return get_port_details(struct sp_port *port)
 {
